@@ -120,17 +120,6 @@ export function GenerateKitPage() {
   const back = () => setStep((s) => s - 1)
 
   const simulateAgentProgress = (kitId: string) => {
-    let agentIndex = 0
-
-    const tick = () => {
-      agentIndex++
-      setAgentsDone((prev) => {
-        const next = [...prev]
-        for (let i = 0; i < agentIndex; i++) next[i] = true
-        return next
-      })
-    }
-
     // Simulate agent completion over ~15s
     const delays = [2000, 4500, 7000, 9500, 12000, 14500]
     delays.forEach((delay, i) => {
