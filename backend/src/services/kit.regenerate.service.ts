@@ -62,7 +62,7 @@ export async function regenerateSection(
     case 'social_captions':
     case 'streaming_pitch': {
       const result = await runContentAgent(ctx, llmOptions)
-      partial = { [input.section]: (result as Record<string, unknown>)[input.section] } as Partial<KitContent>
+      partial = { [input.section]: (result as unknown as Record<string, unknown>)[input.section] } as Partial<KitContent>
       break
     }
     case 'pre_release_plan': {

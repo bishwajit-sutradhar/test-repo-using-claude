@@ -1,4 +1,4 @@
-import { Response, NextFunction } from 'express'
+import { Request, Response, NextFunction } from 'express'
 import { AuthenticatedRequest } from '../types'
 
 type AsyncRouteHandler = (
@@ -8,7 +8,7 @@ type AsyncRouteHandler = (
 ) => Promise<void>
 
 export function asyncHandler(fn: AsyncRouteHandler) {
-  return (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
-    fn(req, res, next).catch(next)
+  return (req: Request, res: Response, next: NextFunction) => {
+    fn(req as AuthenticatedRequest, res, next).catch(next)
   }
 }

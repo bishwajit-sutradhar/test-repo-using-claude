@@ -21,13 +21,7 @@ export async function anthropicAdapter(system: string, user: string, options: LL
   const response = await getClient().messages.create({
     model: options.model,
     max_tokens: options.max_tokens ?? 2048,
-    system: [
-      {
-        type: 'text',
-        text: systemText,
-        cache_control: { type: 'ephemeral' }, // prompt caching on repeated system prompts
-      },
-    ],
+    system: systemText,
     messages: [{ role: 'user', content: user }],
   })
 
